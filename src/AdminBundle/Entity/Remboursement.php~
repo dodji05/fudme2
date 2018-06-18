@@ -1,0 +1,59 @@
+<?php
+
+namespace AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Dons
+ *
+ * @ORM\Table(name="remboursement")
+ * @ORM\Entity(repositoryClass="AdminBundle\Repository\RemboursementRepository")
+ */
+class Remboursement
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="montant", type="integer")
+     */
+    private $montant;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="DateRemboursement", type="datetime")
+     */
+    private $dateRemboursement;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\Projets",inversedBy="remboursement")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $projet;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\Donateurs",inversedBy="remboursement")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $donateur;
+
+
+
+    public function __construct()
+    {
+        $this->dateRemboursement = new \DateTime();
+    }
+
+
+
+}
