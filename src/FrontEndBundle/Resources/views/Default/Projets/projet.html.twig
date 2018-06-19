@@ -5,6 +5,7 @@
      {#{% endstylesheets %}#}
  {#{% endblock %}#}
     {% block contenu %}
+        salut commment
          {% for media in projet.media|slice(0,1)%}
         <div class="project-header-cover" style="background-image: url('{{ asset ('uploads/admin/images/')}}{{ media.chemin  }}')">
             {% endfor %}
